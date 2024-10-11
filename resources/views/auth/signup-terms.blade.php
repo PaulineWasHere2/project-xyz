@@ -6,7 +6,7 @@
 
         <section class="block">
 
-            <form action="" method="get" class="block-content signup-form space-y-8">
+            <form action="{{route('signup-account', ['code' => $code->code])}}" method="get" class="block-content signup-form space-y-8">
                 <div class="title">
                     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd" d="M10 1a4.5 4.5 0 0 0-4.5 4.5V9H5a2 2 0 0 0-2 2v6a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-6a2 2 0 0 0-2-2h-.5V5.5A4.5 4.5 0 0 0 10 1Zm3 8V5.5a3 3 0 1 0-6 0V9h6Z" clip-rule="evenodd" />
@@ -25,7 +25,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div>
                     <p>
                         XYZ est une communauté musicale accessible sur invitation.
@@ -47,7 +47,11 @@
                     <label for="terms">J'ai compris et j'accepte les règles</label>
                 </div>
 
-                <p class="error-message">Exemple de message d'erreur</p>
+                @if (session('error'))
+                    <div style="color: red;">
+                        {{ session('error') }}
+                    </div>
+                @endif
 
                 <div>
                     <input type="hidden" name="code" value="ABCD-123-EFGH">

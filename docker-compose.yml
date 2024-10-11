@@ -17,6 +17,7 @@ services:
       IGNITION_LOCAL_SITES_PATH: '${PWD}'
     volumes:
       - '.:/app'
+      - vendor:/app/vendor:cached
     networks:
       - xyz
     depends_on:

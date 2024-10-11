@@ -23,8 +23,12 @@ class UserFactory extends Factory
      */
     public function definition(): array
     {
+        $name = fake()->name();
+        $avatar = 'https://avatar.iran.liara.run/public/'.(fake()->boolean() ? 'girl' : 'boy').'?name='.$name;
+        //$avatar = 'https://avatar.iran.liara.run/public/girl?name=JohnDoe';
         return [
             'name' => fake()->name(),
+            'avatar' => $avatar,
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
             'password' => static::$password ??= Hash::make('password'),
@@ -41,4 +45,17 @@ class UserFactory extends Factory
             'email_verified_at' => null,
         ]);
     }
+    public function withAvatar(): static{
+        return $this->state(fn (array $attributes) => [
+            'avatar' => 'https://avatar.iran.liara.run/public/'.(fake()->boolean() ? 'girl' : 'boy').'?name'.$name
+        ]) ;
+    }
 }
+
+
+
+
+
+
+//php artisan db:seed
+//php artisan migrate:fresh --seed

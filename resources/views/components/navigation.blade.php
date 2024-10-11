@@ -18,7 +18,7 @@
             <a href="">Profil</a>
         </li>
         <li>
-            <form action="" method="post">
+            <form action="{{route('logout')}}" method="post">
                 @csrf
                 <button type="submit">Se déconnecter</button>
             </form>
